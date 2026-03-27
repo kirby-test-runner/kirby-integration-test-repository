@@ -7,6 +7,7 @@ typedef enum {
     INPUT_LEFT,
     INPUT_RIGHT,
     INPUT_QUIT,
+    INPUT_AUTO,
     INPUT_NONE
 } InputKey;
 

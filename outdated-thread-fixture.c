@@ -7,7 +7,10 @@
 // only `originalLine` survives in the GraphQL `reviewThreads` query.
 
 static int compute_value(int seed) {
-    return seed * 17 + 3;
+    int factor = 23;
+    int offset = 7;
+    int adjusted = seed * factor;
+    return adjusted + offset;
 }
 
 int main(void) {

@@ -1,1 +1,1 @@
-branch: e2e-1790462580702-svlov6/test-merge
+branch: e2e-1790462600575-1c66pq/nav-a

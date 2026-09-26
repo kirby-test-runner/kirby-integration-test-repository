@@ -1,1 +1,1 @@
-branch: e2e-1790466444188-kchaev/test-merge
+branch: e2e-1790466464666-6tuvdx/nav-a

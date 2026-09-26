@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
-SRC = src/main.c src/board.c src/render.c src/input.c
+SRC = src/main.c src/board.c src/render.c src/input.c src/undo.c
 OUT = game2048
 
 all: $(OUT)

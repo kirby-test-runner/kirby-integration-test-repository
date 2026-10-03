@@ -1,10 +1,13 @@
 #include "board.h"
 #include "render.h"
 #include "input.h"
+#include "undo.h"
 
 int main(void) {
     Board board;
+    UndoStack hist;
     board_init(&board);
+    undo_init(&hist);
     input_enable_raw();
 
     int running = 1;
@@ -23,10 +26,25 @@ int main(void) {
         InputKey key = input_read();
         int moved = 0;
         switch (key) {
-            case INPUT_LEFT:  moved = board_move_left(&board);  break;
-            case INPUT_RIGHT: moved = board_move_right(&board); break;
-            case INPUT_UP:    moved = board_move_up(&board);    break;
-            case INPUT_DOWN:  moved = board_move_down(&board);  break;
+            case INPUT_LEFT:
+                undo_push(&hist, &board);
+                moved = board_move_left(&board);
+                break;
+            case INPUT_RIGHT:
+                undo_push(&hist, &board);
+                moved = board_move_right(&board);
+                break;
+            case INPUT_UP:
+                undo_push(&hist, &board);
+                moved = board_move_up(&board);
+                break;
+            case INPUT_DOWN:
+                undo_push(&hist, &board);
+                moved = board_move_down(&board);
+                break;
+            case INPUT_UNDO:
+                undo_pop(&hist, &board);
+                break;
             case INPUT_QUIT:  running = 0; break;
             default: break;
         }

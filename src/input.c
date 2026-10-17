@@ -22,6 +22,7 @@ InputKey input_read(void) {
     char c;
     if (read(STDIN_FILENO, &c, 1) != 1) return INPUT_NONE;
     if (c == 'q' || c == 'Q') return INPUT_QUIT;
+    if (c == 'u' || c == 'U') return INPUT_UNDO;
     if (c == '\033') {
         char seq[2];
         if (read(STDIN_FILENO, &seq[0], 1) != 1) return INPUT_NONE;
